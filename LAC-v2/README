@@ -3,5 +3,5 @@ https://csrc.nist.gov/CSRC/media/Projects/Post-Quantum-Cryptography/documents/ro
 
 In current version, the reference implementation, optimized implementation and AVX2 implementation are all updated according to LACv2. The main modifications include:
 - The message length of all security categories are set to be 256 bits;
-- The parameter settings of the BCH code are ajusted accordingly; besides, in LAC-256v2, the message is additionally ecoded with D2 before going through the BCH process;
+- The parameter settings of the BCH code are ajusted accordingly; besides, in LAC-256v2, the message is additionally ecoded with D2 after going through the BCH process;
 - Ciphertext compression with rounding are used.
