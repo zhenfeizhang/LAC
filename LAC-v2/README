@@ -1,0 +1,7 @@
+This directory contains the source code of the updated LAC cryptosystem, named LACv2. The source code of previous version is available at:
+https://csrc.nist.gov/CSRC/media/Projects/Post-Quantum-Cryptography/documents/round-1/submissions/LAC.zip
+
+In current version, the reference implementation, optimized implementation and AVX2 implementation are all updated according to LACv2. The main modifications include:
+- The message length of all security categories are set to be 256 bits;
+- The parameter settings of the BCH code are ajusted accordingly; besides, in LAC-256v2, the message is additionally ecoded with D2 before going through the BCH process;
+- Ciphertext compression with rounding are used.
