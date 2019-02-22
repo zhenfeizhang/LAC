@@ -55,7 +55,7 @@ int gen_psi(char *e, unsigned int vec_num, unsigned char *seed)
 	p1=r+vec_num/8;
 	p2=p1+vec_num/8;
 	p3=p2+vec_num/8;
-	for(i=0;i<vec_num;i++)
+	for(i=0;(unsigned)i<vec_num;i++)
 	{
 		
 		e_0=((r[i/8]>>(i%8))&1)-((p1[i/8]>>(i%8))&1);
@@ -69,7 +69,7 @@ int gen_psi(char *e, unsigned int vec_num, unsigned char *seed)
 	pseudo_random_bytes(r,vec_num/4,seed);
 	//COMPUTE e from r
 	p=r+vec_num/8;
-	for(i=0;i<vec_num;i++)
+	for(i=0;(unsigned)i<vec_num;i++)
 	{
 		e[i]=((r[i/8]>>(i%8))&1)-((p[i/8]>>(i%8))&1);
 	}
@@ -97,7 +97,7 @@ int poly_mul(const unsigned char *a, const char *s, unsigned char *b, unsigned i
 	}	
 
 	//compute b[i] 
-	for(i=0;i<vec_num;i++)
+	for(i=0;(unsigned)i<vec_num;i++)
 	{
 		v_p=(v+DIM_N-i-1);
 		tmp2 =_mm256_setzero_si256();
@@ -151,7 +151,7 @@ int poly_aff(const unsigned char *a, const char *s, char *e, unsigned char *b, u
 	}	
 
 	//compute b[i] 
-	for(i=0;i<vec_num;i++)
+	for(i=0;(unsigned)i<vec_num;i++)
 	{
 		v_p=(v+DIM_N-i-1);
 		tmp2 =_mm256_setzero_si256();
