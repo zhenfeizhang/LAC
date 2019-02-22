@@ -78,7 +78,7 @@ int test_pke_correctness()
 	unsigned long long mlen=CRYPTO_BYTES,clen=CRYPTO_CIPHERTEXTBYTES;
 	
 	printf("correctness test of pke:\n");
-	for(j=0;j<loop;j++)
+	for(j=0;(unsigned)j<loop;j++)
 	{
 		crypto_encrypt_keypair(pk,sk);
 		random_bytes(k1,CRYPTO_BYTES);
@@ -128,7 +128,7 @@ int test_kem_fo_correctness()
 	long long int  error_num=0;
 	
 	printf("correctness test of kem_fo:\n");
-	for(j=0;j<loop;j++)
+	for(j=0;(unsigned)j<loop;j++)
 	{
 		crypto_kem_keypair(pk,sk);
 		random_bytes(k1,CRYPTO_BYTES);
@@ -160,7 +160,7 @@ int test_ke_correctness()
 	long long int  error_num=0;
 	
 	printf("correctness test of ke:\n");
-	for(j=0;j<loop;j++)
+	for(j=0;(unsigned)j<loop;j++)
 	{
 		for(i=0;i<CTESTS;i++)
 		{
@@ -194,7 +194,7 @@ int test_ake_correctness()
 	crypto_encrypt_keypair(pk_a,sk_a);
 	crypto_encrypt_keypair(pk_b,sk_b);
 	printf("correctness test of ake:\n");
-	for(j=0;j<loop;j++)
+	for(j=0;(unsigned)j<loop;j++)
 	{
 		for(i=0;i<CTESTS;i++)
 		{
