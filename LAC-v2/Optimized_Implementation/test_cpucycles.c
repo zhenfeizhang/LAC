@@ -205,7 +205,7 @@ int test_ake_cpucycles()
     for(i=0;i<NTESTS;i++)
 	{
 		t[i]=cpucycles();
-		crypto_ake_alice_receive(pk_a,sk_a,pk_b,pk,sk,c_a,c_b,k1,k_a);
+		crypto_ake_alice_receive(pk_a,sk_a,pk_b,pk,sk,c_b,k1,k_a);
 	}
 	
     printf("ake alice1 ");
