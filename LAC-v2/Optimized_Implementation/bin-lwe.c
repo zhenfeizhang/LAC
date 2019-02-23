@@ -36,7 +36,7 @@ int gen_a(unsigned char *a,  const unsigned char *seed)
 	
 	return 0;
 }
- 
+
 //generate the small random vector for secret and error
 int gen_psi(char *e, unsigned int vec_num, unsigned char *seed)
 {
@@ -96,9 +96,9 @@ int poly_mul(const unsigned char *a, const char *s, unsigned char *b, unsigned i
 	{
 		v[i]=a[DIM_N-1-i];
 		v[i+DIM_N]=Q-v[i];
-		if(s[i]==-1)
+		if((int8_t)s[i]==-1)
 			s0[i]=0xffff;
-		if(s[i]==1)
+		if((int8_t)s[i]==1)
 			s1[i]=0xffff;
 	}	
 	
@@ -142,7 +142,7 @@ int poly_mul(const unsigned char *a, const char *s, unsigned char *b, unsigned i
 	
 	return 0;
 }
-//b=as+e 
+//b=as+e
 int poly_aff(const unsigned char *a, const char *s, char *e, unsigned char *b, unsigned int vec_num)
 {
 	int i,j;
@@ -158,9 +158,9 @@ int poly_aff(const unsigned char *a, const char *s, char *e, unsigned char *b, u
 	{
 		v[i]=a[DIM_N-1-i];
 		v[i+DIM_N]=Q-v[i];
-		if(s[i]==-1)
+		if((int8_t)s[i]==-1)
 			s0[i]=0xffff;
-		if(s[i]==1)
+		if((int8_t)s[i]==1)
 			s1[i]=0xffff;
 	}	
 	
@@ -199,7 +199,7 @@ int poly_aff(const unsigned char *a, const char *s, char *e, unsigned char *b, u
 		}
 		gather0=((sum0&0xffff)+((sum0>>16)&0xffff)+((sum0>>32)&0xffff)+((sum0>>48)&0xffff));
 		gather1=((sum1&0xffff)+((sum1>>16)&0xffff)+((sum1>>32)&0xffff)+((sum1>>48)&0xffff));
-		b[i]=(gather1-gather0+e[i]+BIG_Q)%Q;
+		b[i]=(gather1-gather0+(int8_t)e[i]+BIG_Q)%Q;
 	}
 	
 	return 0;
