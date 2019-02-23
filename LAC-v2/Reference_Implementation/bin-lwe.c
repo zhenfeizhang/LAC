@@ -99,7 +99,7 @@ int poly_mul(const unsigned char *a, const char *s, unsigned char *b, unsigned i
 		
 		for(j=0;j<loop;j++)
 		{
-			sum+=v_p[j]*s[j];
+			sum+=v_p[j]*(int8_t)s[j];
 		}
 		b[i]=(sum+BIG_Q)%Q;
 	}
@@ -126,9 +126,9 @@ int poly_aff(const unsigned char *a, const char *s, char *e, unsigned char *b, u
 		sum=0;
 		for(j=0;j<loop;j++)
 		{
-			sum+=v_p[j]*s[j];
+			sum+=v_p[j]*(int8_t)s[j];
 		}
-		b[i]=(sum+e[i]+BIG_Q)%Q;
+		b[i]=(sum+(int8_t)e[i]+BIG_Q)%Q;
 	}
 	
 	return 0;
