@@ -1,5 +1,5 @@
 CC     = gcc
-CFLAGS = -g -Wall -Wextra -O3 -DNDEBUG
+CFLAGS = -g -Wall -Wextra -O3 -DNDEBUG -march=native
 
 HEADERS = api.h bch.h bin-lwe.h ecc.h lac_param.h rand.h fips202.h bch128.h bch192.h bch256.h
 SOURCES = ake.c bch.c bin-lwe.c ecc.c encrypt.c ke.c kem.c rand.c fips202.c test_correctness.c test_cpucycles.c test_speed.c main.c
