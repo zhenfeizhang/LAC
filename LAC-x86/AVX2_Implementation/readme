@@ -1,6 +1,6 @@
 1. Getting started
 -------------------------
-This file is an implementation of our LAC algorithm using avx2 instructions. This program uses some functions of OpenSSl, so you need to install OpenSSL for running this program successfully. For building, just run:
+This file is an implementation of our LAC algorithm using avx2 instructions. For building, just run:
 
          make 
 
@@ -42,7 +42,7 @@ There are five main modules.
   - KEM: The IND-CCA secure key encapsulation mechanism algorithms, which is corresponding to LAC.CCA in the documentation.
   - KE: the key exchange algorithm, which is corresponding to LAC.KE in the documentation.
   - AKE: the authenticated key exchange algorithm, which is corresponding to LAC.AKE in the documentation.
-  - Basic: the randomness generator, pseudo-randomness generator, and hash function. These basic blocks mainly based on the functions supported by OpenSSL.
+  - Basic: the randomness generator, pseudo-randomness generator, and hash function. These basic blocks mainly based on the functions supported by fips202.
 
 3 Parameters
 -------------------------
