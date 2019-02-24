@@ -96,7 +96,24 @@
 # define kfree(ptr) free(ptr)
 # define DIV_ROUND_UP(a, b) ((a + b - 1) / b)
 # define ARRAY_SIZE(arr) (sizeof(arr) / sizeof(*(arr)))
-# define cpu_to_be32(x) htobe32(x)
+#if defined(__APPLE__) && defined(__MACH__)
+	#include <libkern/OSByteOrder.h>
+	#define cpu_to_be32(x) __DARWIN_OSSwapInt32(x)
+#elif defined(_WIN32)
+	#if BYTE_ORDER == LITTLE_ENDIAN
+		#include <winsock2.h>
+		#define cpu_to_be32(x) htonl(x)
+	#elif BYTE_ORDER == BIG_ENDIAN
+		#define cpu_to_be32(x) (x)
+	#endif
+#elif defined(__linux__)
+	#include <endian.h>
+	#define cpu_to_be32(x) htobe32(x)
+#elif defined(__arm__) // Byte ordering on ARM 32bit
+	#define cpu_to_be32(x) __builtin_bswap32(x)
+#else
+	#error Platform not supported
+#endif
 # define fls(x) ({ \
 	unsigned int __tmp = x; \
 	unsigned int __count = 0; \

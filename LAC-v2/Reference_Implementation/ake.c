@@ -65,7 +65,7 @@ int crypto_ake_bob_receive(unsigned char *pk_b, unsigned char *sk_b, unsigned ch
 	return 0;
 }
 //Alice receive: receive c, and decrypt to get k2, k3 and comute k=HASH(pk_a,pk_b,pk,c3,k1,k2,k3)
-int crypto_ake_alice_receive(unsigned char *pk_a, unsigned char *sk_a, unsigned char *pk_b, unsigned char *pk, unsigned char *sk, unsigned char *c1, unsigned char *c_in, unsigned char *k1, unsigned char *k)
+int crypto_ake_alice_receive(unsigned char *pk_a, unsigned char *sk_a, unsigned char *pk_b, unsigned char *pk, unsigned char *sk, unsigned char *c_in, unsigned char *k1, unsigned char *k)
 {
 	unsigned char k2[MESSAGE_LEN],k3[MESSAGE_LEN];
 	unsigned char in[3*MESSAGE_LEN+3*PK_LEN+CIPHER_LEN];
