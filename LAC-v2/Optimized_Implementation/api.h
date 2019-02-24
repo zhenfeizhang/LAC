@@ -50,6 +50,6 @@ int crypto_ake_alice_send(unsigned char *pk,unsigned char *sk, unsigned char *pk
 // Bob receive: receive  pk, randomly choose m, and encryrpt m with pk to generate c1 c2, k=HASH(pk,m).
 int crypto_ake_bob_receive(unsigned char *pk_b, unsigned char *sk_b, unsigned char *pk_a, unsigned char *pk, unsigned char *c_in, unsigned char *c_out, unsigned char *k);
 //Alice receive: receive c1,c2, and decrypt to get m and comute k=HASH(pk,m)
-int crypto_ake_alice_receive(unsigned char *pk_a, unsigned char *sk_a,unsigned char *pk_b, unsigned char *pk, unsigned char *sk, unsigned char *c_in, unsigned char *k1, unsigned char *k);
+int crypto_ake_alice_receive(unsigned char *pk_a, unsigned char *sk_a,unsigned char *pk_b, unsigned char *pk, unsigned char *sk, unsigned char *c1, unsigned char *c_in, unsigned char *k1, unsigned char *k);
 
 #endif /* api_h */

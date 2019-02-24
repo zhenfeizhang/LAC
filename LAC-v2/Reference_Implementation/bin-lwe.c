@@ -53,7 +53,7 @@ int gen_psi(char *e, unsigned int vec_num, unsigned char *seed)
 	p1=r+vec_num/8;
 	p2=p1+vec_num/8;
 	p3=p2+vec_num/8;
-	for(i=0;(unsigned)i<vec_num;i++)
+	for(i=0;i<vec_num;i++)
 	{
 		
 		e_0=((r[i/8]>>(i%8))&1)-((p1[i/8]>>(i%8))&1);
@@ -67,7 +67,7 @@ int gen_psi(char *e, unsigned int vec_num, unsigned char *seed)
 	pseudo_random_bytes(r,vec_num/4,seed);
 	//COMPUTE e from r
 	p=r+vec_num/8;
-	for(i=0;(unsigned)i<vec_num;i++)
+	for(i=0;i<vec_num;i++)
 	{
 		e[i]=((r[i/8]>>(i%8))&1)-((p[i/8]>>(i%8))&1);
 	}
@@ -92,14 +92,14 @@ int poly_mul(const unsigned char *a, const char *s, unsigned char *b, unsigned i
 		v[i+DIM_N]=Q-v[i];
 	}	
 	
-	for(i=0;(unsigned)i<vec_num;i++)
+	for(i=0;i<vec_num;i++)
 	{
 		sum=0;
 		v_p=(v+DIM_N-i-1);
 		
 		for(j=0;j<loop;j++)
 		{
-			sum+=v_p[j]*(int8_t)s[j];
+			sum+=v_p[j]*s[j];
 		}
 		b[i]=(sum+BIG_Q)%Q;
 	}
@@ -120,15 +120,15 @@ int poly_aff(const unsigned char *a, const char *s, char *e, unsigned char *b, u
 		v[i]=a[DIM_N-1-i];
 		v[i+DIM_N]=Q-v[i];
 	}	
-	for(i=0;(unsigned)i<vec_num;i++)
+	for(i=0;i<vec_num;i++)
 	{
 		v_p=(v+DIM_N-i-1);
 		sum=0;
 		for(j=0;j<loop;j++)
 		{
-			sum+=v_p[j]*(int8_t)s[j];
+			sum+=v_p[j]*s[j];
 		}
-		b[i]=(sum+(int8_t)e[i]+BIG_Q)%Q;
+		b[i]=(sum+e[i]+BIG_Q)%Q;
 	}
 	
 	return 0;

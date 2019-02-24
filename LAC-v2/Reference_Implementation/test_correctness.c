@@ -78,7 +78,7 @@ int test_pke_correctness()
 	unsigned long long mlen=CRYPTO_BYTES,clen=CRYPTO_CIPHERTEXTBYTES;
 	
 	printf("correctness test of pke:\n");
-	for(j=0;(unsigned)j<loop;j++)
+	for(j=0;j<loop;j++)
 	{
 		crypto_encrypt_keypair(pk,sk);
 		random_bytes(k1,CRYPTO_BYTES);
@@ -128,7 +128,7 @@ int test_kem_fo_correctness()
 	long long int  error_num=0;
 	
 	printf("correctness test of kem_fo:\n");
-	for(j=0;(unsigned)j<loop;j++)
+	for(j=0;j<loop;j++)
 	{
 		crypto_kem_keypair(pk,sk);
 		random_bytes(k1,CRYPTO_BYTES);
@@ -160,7 +160,7 @@ int test_ke_correctness()
 	long long int  error_num=0;
 	
 	printf("correctness test of ke:\n");
-	for(j=0;(unsigned)j<loop;j++)
+	for(j=0;j<loop;j++)
 	{
 		for(i=0;i<CTESTS;i++)
 		{
@@ -194,13 +194,13 @@ int test_ake_correctness()
 	crypto_encrypt_keypair(pk_a,sk_a);
 	crypto_encrypt_keypair(pk_b,sk_b);
 	printf("correctness test of ake:\n");
-	for(j=0;(unsigned)j<loop;j++)
+	for(j=0;j<loop;j++)
 	{
 		for(i=0;i<CTESTS;i++)
 		{
 			crypto_ake_alice_send(pk,sk,pk_b,sk_a,c_a,k1);
 			crypto_ake_bob_receive(pk_b,sk_b,pk_a,pk,c_a,c_b,k_b);
-			crypto_ake_alice_receive(pk_a,sk_a,pk_b,pk,sk,c_b,k1,k_a);
+			crypto_ake_alice_receive(pk_a,sk_a,pk_b,pk,sk,c_a,c_b,k1,k_a);
 			if(memcmp(k_b,k_a,CRYPTO_BYTES)!=0)
 			{
 				error_num++;

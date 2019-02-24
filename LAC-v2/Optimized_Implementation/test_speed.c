@@ -209,7 +209,7 @@ int test_ake_speed()
     start=clock();
     for(i=0;i<NTESTS;i++)
 	{
-		crypto_ake_alice_receive(pk_a,sk_a,pk_b,pk,sk,c_b,k1,k_a);
+		crypto_ake_alice_receive(pk_a,sk_a,pk_b,pk,sk,c_a,c_b,k1,k_a);
 	}
     finish=clock();
     total_time=(double)(finish-start)/CLOCKS_PER_SEC;

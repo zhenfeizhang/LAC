@@ -51,7 +51,7 @@ int ecc_init()
 	{
 		memset(ecc_bch.elp,0,(ecc_bch.t+1)*sizeof(struct gf_poly_deg1));
 	}
-	for (i = 0; (unsigned)i < ARRAY_SIZE(ecc_bch.poly_2t); i++)
+	for (i = 0; i < ARRAY_SIZE(ecc_bch.poly_2t); i++)
 	{
 		ecc_bch.poly_2t[i] = malloc(GF_POLY_SZ(2*ecc_bch.t));
 		if(ecc_bch.poly_2t[i]==NULL)
@@ -78,7 +78,7 @@ int ecc_free()
 		ecc_bch.elp=NULL;
 	}
 	
-	for (i = 0; (unsigned)i < ARRAY_SIZE(ecc_bch.poly_2t); i++)
+	for (i = 0; i < ARRAY_SIZE(ecc_bch.poly_2t); i++)
 	{
 		if(ecc_bch.poly_2t[i]!=NULL)
 		{

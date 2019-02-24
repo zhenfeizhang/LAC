@@ -59,7 +59,7 @@ int kem_enc_fo_seed(const unsigned char *pk, unsigned char *k, unsigned char *c,
 	
 	//generate random message m from seed, stored in buf
 	pseudo_random_bytes(buf,MESSAGE_LEN,seed);
-	//compute local_seed=gen_seed(m)
+	//compute loacal_seed=gen_seed(m)
 	gen_seed(buf,MESSAGE_LEN,local_seed);
 	//encrypt m with local_seed
 	pke_enc_seed(pk,buf,MESSAGE_LEN,c,local_seed);

@@ -1,6 +1,6 @@
 1. Getting started
 -------------------------
-This file is an optimized implementation of our LAC algorithm. This program uses some functions of OpenSSL, so you need to install OpenSSL for running this program successfully. For building, just run:
+This file is an optimized implementation of our LAC algorithm. This program uses some functions of OpenSSl, so you need to install OpenSSL for running this program successfully. For building, just run:
 
          make 
 

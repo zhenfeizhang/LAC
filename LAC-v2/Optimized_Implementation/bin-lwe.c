@@ -36,7 +36,7 @@ int gen_a(unsigned char *a,  const unsigned char *seed)
 	
 	return 0;
 }
-
+ 
 //generate the small random vector for secret and error
 int gen_psi(char *e, unsigned int vec_num, unsigned char *seed)
 {
@@ -56,7 +56,7 @@ int gen_psi(char *e, unsigned int vec_num, unsigned char *seed)
 	p1=r+vec_num/8;
 	p2=p1+vec_num/8;
 	p3=p2+vec_num/8;
-	for(i=0;(unsigned)i<vec_num;i++)
+	for(i=0;i<vec_num;i++)
 	{
 		
 		e_0=((r[i/8]>>(i%8))&1)-((p1[i/8]>>(i%8))&1);
@@ -70,7 +70,7 @@ int gen_psi(char *e, unsigned int vec_num, unsigned char *seed)
 	pseudo_random_bytes(r,vec_num/4,seed);
 	//COMPUTE e from r
 	p=r+vec_num/8;
-	for(i=0;(unsigned)i<vec_num;i++)
+	for(i=0;i<vec_num;i++)
 	{
 		e[i]=((r[i/8]>>(i%8))&1)-((p[i/8]>>(i%8))&1);
 	}
@@ -96,13 +96,13 @@ int poly_mul(const unsigned char *a, const char *s, unsigned char *b, unsigned i
 	{
 		v[i]=a[DIM_N-1-i];
 		v[i+DIM_N]=Q-v[i];
-		if((int8_t)s[i]==-1)
+		if(s[i]==-1)
 			s0[i]=0xffff;
-		if((int8_t)s[i]==1)
+		if(s[i]==1)
 			s1[i]=0xffff;
 	}	
 	
-	for(i=0;(unsigned)i<vec_num;i++)
+	for(i=0;i<vec_num;i++)
 	{
 		v_p=(int64_t*)(v+DIM_N-i-1);
 		s0_p=(int64_t*)s0;
@@ -142,7 +142,7 @@ int poly_mul(const unsigned char *a, const char *s, unsigned char *b, unsigned i
 	
 	return 0;
 }
-//b=as+e
+//b=as+e 
 int poly_aff(const unsigned char *a, const char *s, char *e, unsigned char *b, unsigned int vec_num)
 {
 	int i,j;
@@ -158,13 +158,13 @@ int poly_aff(const unsigned char *a, const char *s, char *e, unsigned char *b, u
 	{
 		v[i]=a[DIM_N-1-i];
 		v[i+DIM_N]=Q-v[i];
-		if((int8_t)s[i]==-1)
+		if(s[i]==-1)
 			s0[i]=0xffff;
-		if((int8_t)s[i]==1)
+		if(s[i]==1)
 			s1[i]=0xffff;
 	}	
 	
-	for(i=0;(unsigned)i<vec_num;i++)
+	for(i=0;i<vec_num;i++)
 	{
 		v_p=(int64_t*)(v+DIM_N-i-1);
 		s0_p=(int64_t*)s0;
@@ -199,7 +199,7 @@ int poly_aff(const unsigned char *a, const char *s, char *e, unsigned char *b, u
 		}
 		gather0=((sum0&0xffff)+((sum0>>16)&0xffff)+((sum0>>32)&0xffff)+((sum0>>48)&0xffff));
 		gather1=((sum1&0xffff)+((sum1>>16)&0xffff)+((sum1>>32)&0xffff)+((sum1>>48)&0xffff));
-		b[i]=(gather1-gather0+(int8_t)e[i]+BIG_Q)%Q;
+		b[i]=(gather1-gather0+e[i]+BIG_Q)%Q;
 	}
 	
 	return 0;
